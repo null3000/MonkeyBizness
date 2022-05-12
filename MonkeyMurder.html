@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/1.0.4/aframe.min.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v4.0.1/dist/aframe-physics-system.min.js"></script>
+    <script>
+      AFRAME.registerComponent("game", {
+        init:function(){
+          var cam=document.querySelector("a-camera");
+        }
+      })
+    </script>
+  </head>
+  <body>
+    <a-scene game>
+      <a-camera controls="pointerLockEnabled:true"><a-cursor color="#78deff"></a-cursor>
+        <a-cylinder radius="0.075" position="0.5 -0.25 -0.75" rotation="-90 0 0" height="0.25" color="#859aa1" material="shader:flat">
+          <a-box position="0 -0.3 -0.025" depth="0.2" height="0.35" width="0.15" color="#17627a" material="shader:flat">
+            <a-box position="0 0 0.075" depth="0.1" height="0.275" width="0.125" color="#364547" material="shader:flat"></a-box>
+            <a-box position="0 0 0.1" depth="0.1" height="0.05" width="0.1" color="#859aa1" material="shader:flat"></a-box>
+            <a-box position="0 0.075 0.1" depth="0.1" height="0.05" width="0.1" color="#859aa1" material="shader:flat"></a-box>
+            <a-box position="0 -0.075 0.1" depth="0.1" height="0.05" width="0.1" color="#859aa1" material="shader:flat"></a-box>
+          </a-box>
+        </a-cylinder>
+        <a-cylinder radius="0.1" height="0.25" rotation="-90 0 0" position="0.5 -0.25 -1" color="#364547" material="shader:flat"></a-cylinder>
+      </a-camera>
+      <!--Monke-->
+      <a-cylinder id="monke"></a-cylinder>
+      <!--stage-->
+      <a-plane static-body position="0 -1 0" rotation="-90 0 0" color="black" width="50" height="50" material="metalness:100">
+      <a-plane static-body position="0 0.25 0" color="#0ff751" geometry="segmentsWidth:50; segmentsHeight:50; segmentsDepth:50;" width="50" height="50" material="shader:flat; wireframe:true;"></a-plane></a-plane>
+      <a-plane static-body position="0 1 -2" rotation="-90 0 0" color="black" width="2.5" height="2.5" material="metalness:100">
+      <a-plane static-body position="0 0 0.0125" color="#0ff751" geometry="segmentsWidth:5; segmentsHeight:5; segmentsDepth:5;" width="2.5" height="2.5" material="shader:flat; wireframe:true;"></a-plane></a-plane>
+      <a-sky color="black"></a-sky>
+    </a-scene>
+  </body>
+</html>
