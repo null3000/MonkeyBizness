@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+	<script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v4.0.1/dist/aframe-physics-system.min.js"></script>
+
+</head>
+
+<body>
+	<script>
+		AFRAME.registerComponent("pooltable", {
+			init: function () {
+				var ball = document.querySelector("#cueball");
+				var cue = document.querySelector("#cue");
+				    
+				var cam = document.querySelector("a-camera");
+									var ballpos = ball.getAttribute("position").y;
+					if(ballpos <0){
+						alert("Hello! I am an alert box!!");
+					}
+				this.objects = document.querySelectorAll("a-sphere");
+				this.scoreText = document.querySelector("a-text");
+				var button1 = document.querySelector("#button1");
+				var button2 = document.querySelector("#button2");
+				var button3 = document.querySelector("#button3");
+				var skyCycle = 1;
+				var sky = document.querySelector("a-sky");
+				var cueCycle = 1;
+				var ballCycle = 1;
+				ball.addEventListener("click", function () {
+					var bz = ball.getAttribute("position").z;
+					cue.setAttribute("animation", "to", {x: 0, y: -.3, z: bz});
+					cue.emit("shoot");
+				})
+				cue.addEventListener("animationcomplete", function () {
+					var deg = cam.getAttribute("rotation").y;
+					var power = (Math.random() * -5) - 10;
+					var x = Math.sin(deg * Math.PI / 180) * power;
+					var z = Math.cos(deg * Math.PI / 180) * power;
+					ball.body.velocity.set(x, 0, z);
+					cue.setAttribute("position", "0 -.3 -1");
+				})
+				button1.addEventListener("click", function () {
+					if (skyCycle == 1) {
+						sky.setAttribute("color", "#FF6F61");
+					}
+					else if (skyCycle == 2) {
+						sky.setAttribute("color", "#F7CAC9");
+					}
+					else if (skyCycle == 3) {
+						sky.setAttribute("color", "#92A8D1");
+					}
+					else {
+						sky.setAttribute("color", "#1b4401");
+						skyCycle = 1;
+					}
+					skyCycle = skyCycle + 1;
+				})
+				button2.addEventListener("click", function () {
+					if (cueCycle == 1) {
+						cue.setAttribute("color", "black");
+						cueCycle = 2;
+					}
+					else if (cueCycle == 2) {
+						cue.setAttribute("color", "red");
+						cueCycle = 3;
+					}
+					else if (cueCycle == 3) {
+						cue.setAttribute("color", "seagreen");
+						cueCycle = 4;
+					}
+					else if (cueCycle >= 4) {
+						cue.setAttribute("color", "tan");
+						cueCycle = 1;
+					}
+				})
+				button3.addEventListener("click", function () {
+					if (ballCycle == 1) {
+						ball.setAttribute("color", "#DD4124");
+						ballCycle = 2;
+					}
+					else if (ballCycle == 2) {
+						ball.setAttribute("color", "#5B5EA6");
+						ballCycle = 3;
+					}
+					else if (ballCycle == 3) {
+						ball.setAttribute("color", "#9A8B4F");
+						ballCycle = 4;
+					}
+					else if (ballCycle >= 4) {
+						ball.setAttribute("color", "white");
+						ballCycle = 1;
+					}
+				})
+			},
+			tick: function () {
+				var score = 0;
+				for (var i = 0; i < this.objects.length; i++) {
+					var y = this.objects[i].getAttribute("position").y
+					if (y < 0) {
+						score++;	
+     
+					}
+                  var ball = document.querySelector("#cueball");
+          var by= ball.getAttribute("position").y;
+        if(by<0){
+         alert("I am a genius");
+            }
+
+				}
+				this.scoreText.setAttribute("value", score);
+			}
+			
+		})
+	</script>
+
+	<a-scene pooltable>
+		<a-sky color="#1b4401"></a-sky>
+		<a-camera>
+			<a-cursor></a-cursor>
+			<!-- cue -->
+			<a-cylinder id="cue" static-body position="0 -.3 -1" radius="0.1" height="4" rotation="90 0 0" color="tan"
+				animation="property: position; to: 0 -.3 -5; startEvents: shoot"></a-cylinder>
+			<a-text position="0 3 -5" color="black" value="score"></a-text>
+		</a-camera>
+		<!-- field -->
+		<a-plane static-body position="0 0 -7.875" rotation="-90 0 0" width="4" height="3.25" color="#86242a" shadow>
+		</a-plane>
+		<a-plane static-body position="0 0 -4.125" rotation="-90 0 0" width="4" height="3.25" color="#86242a" shadow>
+		</a-plane>
+		<a-plane static-body position="0 0 -2.25" rotation="-90 0 0" width="3" height="0.5" color="#86242a" shadow>
+		</a-plane>
+		<a-plane static-body position="0 0 -9.75" rotation="-90 0 0" width="3" height="0.5" color="#86242a" shadow>
+		</a-plane>
+		<a-plane static-body position="0 0 -6" rotation="-90 0 0" width="3" height="1" color="#86242a" shadow></a-plane>
+		<!-- walls -->
+		<a-box static-body position="-2 0 -6" width="0.2" height="0.6" depth="8" color="#482029"></a-box>
+		<a-box static-body position="2 0 -6" width="0.2" height="0.6" depth="8" color="#482029"></a-box>
+		<a-box static-body position="0 0 -10" width="4.2" height="0.6" depth="0.2" color="#482029"></a-box>
+		<a-box static-body position="0 0 -2" width="4.2" height="0.6" depth="0.2" color="#482029"></a-box>
+		<!-- lining -->
+		<a-box static-body position="0 0.3 -1.9" width="4.2" height="0.025" depth="0.025" color="#C0C0C0"></a-box>
+		<a-box static-body position="0 -0.3 -1.9" width="4.2" height="0.025" depth="0.025" color="#C0C0C0"></a-box>
+		<a-box static-body position="0 0.3 -2.1" width="3.8" height="0.025" depth="0.025" color="#C0C0C0"></a-box>
+		<a-box static-body position="0 0.3 -9.9" width="3.8" height="0.025" depth="0.025" color="#C0C0C0"></a-box>
+		<a-box static-body position="0 0.3 -10.1" width="4.2" height="0.025" depth="0.025" color="#C0C0C0"></a-box>
+		<a-box static-body position="0 -0.3 -10.1" width="4.2" height="0.025" depth="0.025" color="#C0C0C0"></a-box>
+		<a-box static-body position="-1.9 0.3 -6" width="0.025" height="0.025" depth="7.8" color="#C0C0C0"></a-box>
+		<a-box static-body position="-2.1 0.3 -6" width="0.025" height="0.025" depth="8.2" color="#C0C0C0"></a-box>
+		<a-box static-body position="-2.1 -0.3 -6" width="0.025" height="0.025" depth="8.2" color="#C0C0C0"></a-box>
+		<a-box static-body position="2.1 0.3 -6" width="0.025" height="0.025" depth="8.2" color="#C0C0C0"></a-box>
+		<a-box static-body position="2.1 -0.3 -6" width="0.025" height="0.025" depth="8.2" color="#C0C0C0"></a-box>
+		<a-box static-body position="1.9 0.3 -6" width="0.025" height="0.025" depth="7.8" color="#C0C0C0"></a-box>
+		<a-box static-body position="2.1 0 -1.9" width="0.025" height="0.6" depth="0.025" color="#C0C0C0"></a-box>
+		<a-box static-body position="-2.1 0 -1.9" width="0.025" height="0.6" depth="0.025" color="#C0C0C0"></a-box>
+		<a-box static-body position="2.1 0 -10.1" width="0.025" height="0.6" depth="0.025" color="#C0C0C0"></a-box>
+		<a-box static-body position="-2.1 0 -10.1" width="0.025" height="0.6" depth="0.025" color="#C0C0C0"></a-box>
+		<a-box static-body position="2 0.3 -2" width="0.275" height="0.025" depth="0.025" rotation="0 -45 0"
+			color="#C0C0C0"></a-box>
+		<a-box static-body position="-2 0.3 -2" width="0.275" height="0.025" depth="0.025" rotation="0 45 0"
+			color="#C0C0C0"></a-box>
+		<a-box static-body position="2 0.3 -10" width="0.275" height="0.025" depth="0.025" rotation="0 45 0"
+			color="#C0C0C0"></a-box>
+		<a-box static-body position="-2 0.3 -10" width="0.275" height="0.025" depth="0.025" rotation="0 -45 0"
+			color="#C0C0C0"></a-box>
+		<!-- pockets-->
+		<a-plane static-body color="#482029" position="-1.75 -1 -2.5" width="0.5" height="2"></a-plane>
+		<a-plane static-body color="#482029" position="-1.5 -1 -2.25" width="0.5" height="2" rotation="0 -90 0"></a-plane>
+		<a-plane static-body color="#482029" position="-2 -1 -2.25" width="0.5" height="2" rotation="0 90 0"></a-plane>
+		<a-plane static-body color="#482029" position="-1.75 -1 -2" width="0.5" height="2" rotation="0 180 0"></a-plane>
+		<a-plane static-body color="#482029" position="-1.75 -2 -2.25" width="0.5" height="0.5" rotation="-90 0 0">
+		</a-plane>
+
+		<a-plane static-body color="#482029" position="1.75 -1 -2.5" width="0.5" height="2"></a-plane>
+		<a-plane static-body color="#482029" position="1.5 -1 -2.25" width="0.5" height="2" rotation="0 90 0"></a-plane>
+		<a-plane static-body color="#482029" position="2 -1 -2.25" width="0.5" height="2" rotation="0 -90 0"></a-plane>
+		<a-plane static-body color="#482029" position="1.75 -1 -2" width="0.5" height="2" rotation="0 180 0"></a-plane>
+		<a-plane static-body color="#482029" position="1.75 -2 -2.25" width="0.5" height="0.5" rotation="-90 0 0"></a-plane>
+
+		<a-plane static-body color="#482029" position="-1.75 -1 -10" width="0.5" height="2"></a-plane>
+		<a-plane static-body color="#482029" position="-1.5 -1 -9.75" width="0.5" height="2" rotation="0 -90 0"></a-plane>
+		<a-plane static-body color="#482029" position="-2 -1 -9.75" width="0.5" height="2" rotation="0 90 0"></a-plane>
+		<a-plane static-body color="#482029" position="-1.75 -1 -9.5" width="0.5" height="2" rotation="0 180 0"></a-plane>
+		<a-plane static-body color="#482029" position="-1.75 -2 -9.75" width="0.5" height="0.5" rotation="-90 0 0">
+		</a-plane>
+
+		<a-plane static-body color="#482029" position="1.75 -1 -10" width="0.5" height="2"></a-plane>
+		<a-plane static-body color="#482029" position="1.5 -1 -9.75" width="0.5" height="2" rotation="0 90 0"></a-plane>
+		<a-plane static-body color="#482029" position="2 -1 -9.75" width="0.5" height="2" rotation="0 -90 0"></a-plane>
+		<a-plane static-body color="#482029" position="1.75 -1 -9.5" width="0.5" height="2" rotation="0 180 0"></a-plane>
+		<a-plane static-body color="#482029" position="1.75 -2 -9.75" width="0.5" height="0.5" rotation="-90 0 0"></a-plane>
+
+		<a-plane static-body color="#482029" position="-1.75 -1 -6.25" width="0.5" height="2"></a-plane>
+		<a-plane static-body color="#482029" position="-1.5 -1 -6" width="0.5" height="2" rotation="0 -90 0"></a-plane>
+		<a-plane static-body color="#482029" position="-2 -1 -6" width="0.5" height="2" rotation="0 90 0"></a-plane>
+		<a-plane static-body color="#482029" position="-1.75 -1 -5.75" width="0.5" height="2" rotation="0 180 0"></a-plane>
+		<a-plane static-body color="#482029" position="-1.75 -2 -6" width="0.5" height="0.5" rotation="-90 0 0"></a-plane>
+
+		<a-plane static-body color="#482029" position="1.75 -1 -6.25" width="0.5" height="2"></a-plane>
+		<a-plane static-body color="#482029" position="1.5 -1 -6" width="0.5" height="2" rotation="0 90 0"></a-plane>
+		<a-plane static-body color="#482029" position="2 -1 -6" width="0.5" height="2" rotation="0 -90 0"></a-plane>
+		<a-plane static-body color="#482029" position="1.75 -1 -5.75" width="0.5" height="2" rotation="0 180 0"></a-plane>
+		<a-plane static-body color="#482029" position="1.75 -2 -6" width="0.5" height="0.5" rotation="-90 0 0"></a-plane>
+		<!-- balls -->
+		<a-sphere dynamic-body="linearDamping:0.2" id="cueball" position="0 .2 -3" radius=".15">
+		</a-sphere>
+		<a-sphere dynamic-body="linearDamping:0.2" position="0 .2 -6" radius=".15" color="red"></a-sphere>
+		<a-sphere dynamic-body="linearDamping:0.2" position="-.2 .2 -6.4" radius=".15" color="yellow"></a-sphere>
+		<a-sphere dynamic-body="linearDamping:0.2" position=".2 .2 -6.4" radius=".15" color="blue"></a-sphere>
+		<a-sphere dynamic-body="linearDamping:0.2" position="0 .2 -6.8" radius=".15" color="orange"></a-sphere>
+		<a-sphere dynamic-body="linearDamping:0.2" position="-.4 .2 -6.8" radius=".15" color="green"></a-sphere>
+		<a-sphere dynamic-body="linearDamping:0.2" position=".4 .2 -6.8" radius=".15" color="purple"></a-sphere>
+		<a-sphere dynamic-body="linearDamping:0.2" position="-.6 .2 -7.2" radius=".15" color="black"></a-sphere>
+		<a-sphere dynamic-body="linearDamping:0.2" position=".2 .2 -7.2" radius=".15" color="seagreen"></a-sphere>
+		<a-sphere dynamic-body="linearDamping:0.2" position="-.2 .2 -7.2" radius=".15" color="cyan"></a-sphere>
+		<a-sphere dynamic-body="linearDamping:0.2" position=".6 .2 -7.2" radius=".15" color="lightblue"></a-sphere>
+		<a-sphere dynamic-body="linearDamping:0.2" position="-.8 .2 -7.6" radius=".15" color="pink"></a-sphere>
+		<a-sphere dynamic-body="linearDamping:0.2" position=".8 .2 -7.6" radius=".15" color="brown"></a-sphere>
+		<a-sphere dynamic-body="linearDamping:0.2" position="0 .2 -7.6" radius=".15" color="gray"></a-sphere>
+		<a-sphere dynamic-body="linearDamping:0.2" position=".4 .2 -7.6" radius=".15" color="orangered"></a-sphere>
+		<a-sphere dynamic-body="linearDamping:0.2" position="-.4 .2 -7.6" radius=".15" color="darkred"></a-sphere>
+		<!--       buttons -->
+		<a-box position="0 0 -1.95" depth="0.15" height="0.35" rotation="0 0 0" color="#86242a"></a-box>
+		<a-cylinder id="button2" position="0 0 -1.9" rotation="90 0 0" radius="0.1" height="0.1" color="#482029">
+		</a-cylinder>
+		<a-cylinder id="button1" position="-0.25 0 -1.9" rotation="90 0 0" radius="0.1" height="0.1" color="#482029">
+		</a-cylinder>
+		<a-cylinder id="button3" position="0.25 0 -1.9" rotation="90 0 0" radius="0.1" height="0.1" color="#482029">
+		</a-cylinder>
+	</a-scene>
+</body>
+
+</html>
