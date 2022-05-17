@@ -13,12 +13,8 @@
 			init: function () {
 				var ball = document.querySelector("#cueball");
 				var cue = document.querySelector("#cue");
-				    
 				var cam = document.querySelector("a-camera");
-									var ballpos = ball.getAttribute("position").y;
-					if(ballpos <0){
-						alert("Hello! I am an alert box!!");
-					}
+				var ballpos = ball.getAttribute("position").y;
 				this.objects = document.querySelectorAll("a-sphere");
 				this.scoreText = document.querySelector("a-text");
 				var button1 = document.querySelector("#button1");
@@ -38,7 +34,7 @@
 					var power = (Math.random() * -5) - 10;
 					var x = Math.sin(deg * Math.PI / 180) * power;
 					var z = Math.cos(deg * Math.PI / 180) * power;
-					ball.body.velocity.set(x, 0, z);
+					ball.body.velocity.set(x, .5, z);
 					cue.setAttribute("position", "0 -.3 -1");
 				})
 				button1.addEventListener("click", function () {
@@ -99,25 +95,36 @@
 				for (var i = 0; i < this.objects.length; i++) {
 					var y = this.objects[i].getAttribute("position").y
 					if (y < 0) {
-						score++;	
-     
+						score++;
+
 					}
-                  var ball = document.querySelector("#cueball");
-          var by= ball.getAttribute("position").y;
-        if(by<0){
-         alert("I am a genius");
-            }
+					var ball = document.querySelector("#cueball");
+					var ballY = ball.getAttribute("position").y;
+					var ballX = ball.getAttribute("position").x;
+					var ballZ = ball.getAttribute("position").z;
+					if (ballY < 0) {
+
+
+						
+
+
+						ball.body.velocity.set(0, 0, 0);
+						setTimeout(function(){
+   ball.body.position.set(0, .25, -3);		
+}, 1000);
+					}
+				
 
 				}
 				this.scoreText.setAttribute("value", score);
 			}
-			
+
 		})
 	</script>
 
 	<a-scene pooltable>
 		<a-sky color="#1b4401"></a-sky>
-		<a-camera>
+		<a-camera wasd-controls="acceleration: 250">
 			<a-cursor></a-cursor>
 			<!-- cue -->
 			<a-cylinder id="cue" static-body position="0 -.3 -1" radius="0.1" height="4" rotation="90 0 0" color="tan"
@@ -165,39 +172,39 @@
 		<a-box static-body position="-2 0.3 -10" width="0.275" height="0.025" depth="0.025" rotation="0 -45 0"
 			color="#C0C0C0"></a-box>
 		<!-- pockets-->
-		<a-plane static-body color="#482029" position="-1.75 -1 -2.5" width="0.5" height="2"></a-plane>
+		<a-plane static-body color="#482029" position="-1.75 -1 -2.55" width="0.5" height="2"></a-plane>
 		<a-plane static-body color="#482029" position="-1.5 -1 -2.25" width="0.5" height="2" rotation="0 -90 0"></a-plane>
 		<a-plane static-body color="#482029" position="-2 -1 -2.25" width="0.5" height="2" rotation="0 90 0"></a-plane>
 		<a-plane static-body color="#482029" position="-1.75 -1 -2" width="0.5" height="2" rotation="0 180 0"></a-plane>
 		<a-plane static-body color="#482029" position="-1.75 -2 -2.25" width="0.5" height="0.5" rotation="-90 0 0">
 		</a-plane>
 
-		<a-plane static-body color="#482029" position="1.75 -1 -2.5" width="0.5" height="2"></a-plane>
+		<a-plane static-body color="#482029" position="1.75 -1 -2.55" width="0.5" height="2"></a-plane>
 		<a-plane static-body color="#482029" position="1.5 -1 -2.25" width="0.5" height="2" rotation="0 90 0"></a-plane>
 		<a-plane static-body color="#482029" position="2 -1 -2.25" width="0.5" height="2" rotation="0 -90 0"></a-plane>
 		<a-plane static-body color="#482029" position="1.75 -1 -2" width="0.5" height="2" rotation="0 180 0"></a-plane>
 		<a-plane static-body color="#482029" position="1.75 -2 -2.25" width="0.5" height="0.5" rotation="-90 0 0"></a-plane>
 
-		<a-plane static-body color="#482029" position="-1.75 -1 -10" width="0.5" height="2"></a-plane>
+		<a-plane static-body color="#482029" position="-1.75 -1 -10.05" width="0.5" height="2"></a-plane>
 		<a-plane static-body color="#482029" position="-1.5 -1 -9.75" width="0.5" height="2" rotation="0 -90 0"></a-plane>
 		<a-plane static-body color="#482029" position="-2 -1 -9.75" width="0.5" height="2" rotation="0 90 0"></a-plane>
 		<a-plane static-body color="#482029" position="-1.75 -1 -9.5" width="0.5" height="2" rotation="0 180 0"></a-plane>
 		<a-plane static-body color="#482029" position="-1.75 -2 -9.75" width="0.5" height="0.5" rotation="-90 0 0">
 		</a-plane>
 
-		<a-plane static-body color="#482029" position="1.75 -1 -10" width="0.5" height="2"></a-plane>
+		<a-plane static-body color="#482029" position="1.75 -1 -10.05" width="0.5" height="2"></a-plane>
 		<a-plane static-body color="#482029" position="1.5 -1 -9.75" width="0.5" height="2" rotation="0 90 0"></a-plane>
 		<a-plane static-body color="#482029" position="2 -1 -9.75" width="0.5" height="2" rotation="0 -90 0"></a-plane>
 		<a-plane static-body color="#482029" position="1.75 -1 -9.5" width="0.5" height="2" rotation="0 180 0"></a-plane>
 		<a-plane static-body color="#482029" position="1.75 -2 -9.75" width="0.5" height="0.5" rotation="-90 0 0"></a-plane>
 
-		<a-plane static-body color="#482029" position="-1.75 -1 -6.25" width="0.5" height="2"></a-plane>
+		<a-plane static-body color="#482029" position="-1.75 -1 -6.3" width="0.5" height="2"></a-plane>
 		<a-plane static-body color="#482029" position="-1.5 -1 -6" width="0.5" height="2" rotation="0 -90 0"></a-plane>
 		<a-plane static-body color="#482029" position="-2 -1 -6" width="0.5" height="2" rotation="0 90 0"></a-plane>
 		<a-plane static-body color="#482029" position="-1.75 -1 -5.75" width="0.5" height="2" rotation="0 180 0"></a-plane>
 		<a-plane static-body color="#482029" position="-1.75 -2 -6" width="0.5" height="0.5" rotation="-90 0 0"></a-plane>
 
-		<a-plane static-body color="#482029" position="1.75 -1 -6.25" width="0.5" height="2"></a-plane>
+		<a-plane static-body color="#482029" position="1.75 -1 -6.3" width="0.5" height="2"></a-plane>
 		<a-plane static-body color="#482029" position="1.5 -1 -6" width="0.5" height="2" rotation="0 90 0"></a-plane>
 		<a-plane static-body color="#482029" position="2 -1 -6" width="0.5" height="2" rotation="0 -90 0"></a-plane>
 		<a-plane static-body color="#482029" position="1.75 -1 -5.75" width="0.5" height="2" rotation="0 180 0"></a-plane>
@@ -218,7 +225,7 @@
 		<a-sphere dynamic-body="linearDamping:0.2" position="-.8 .2 -7.6" radius=".15" color="pink"></a-sphere>
 		<a-sphere dynamic-body="linearDamping:0.2" position=".8 .2 -7.6" radius=".15" color="brown"></a-sphere>
 		<a-sphere dynamic-body="linearDamping:0.2" position="0 .2 -7.6" radius=".15" color="gray"></a-sphere>
-		<a-sphere dynamic-body="linearDamping:0.2" position=".4 .2 -7.6" radius=".15" color="orangered"></a-sphere>
+		<a-sphere dynamic-body="linearDamping:0.2" position=".4 .2 -7.6" radius=".15" color=""></a-sphere>
 		<a-sphere dynamic-body="linearDamping:0.2" position="-.4 .2 -7.6" radius=".15" color="darkred"></a-sphere>
 		<!--       buttons -->
 		<a-box position="0 0 -1.95" depth="0.15" height="0.35" rotation="0 0 0" color="#86242a"></a-box>
@@ -229,6 +236,8 @@
 		<a-cylinder id="button3" position="0.25 0 -1.9" rotation="90 0 0" radius="0.1" height="0.1" color="#482029">
 		</a-cylinder>
 	</a-scene>
+
+	<script src="script.js"></script>
 </body>
 
 </html>
