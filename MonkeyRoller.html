@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v4.0.1/dist/aframe-physics-system.min.js"></script>
+  </head>
+  <body>
+       <script>
+      AFRAME.registerComponent("projectile", {
+        init: function() {
+          var ball = document.querySelector("a-sphere");
+          var camera = document.querySelector("a-camera");
+          var sts = document.getElementById("#stair");
+          var joe = false;
+          for(var i=0; i<sts.length; i++){
+            sts[i].setAttribute("color","#FFD700")
+           sts[i].setAttribute("position", {x:i*2.5, y:i, z:-10})
+          }
+
+          window.addEventListener("keypress", function (e){
+            if(e.keyCode == 32 && joe==false){
+              ball.body.velocity.set(0, 20, -4)
+              joe=true;
+            }
+          })
+          window.addEventListener("keyup", function (e){
+            if(e.keyCode == 32){
+              ball.body.velocity.set(0, -4, -4)
+              setTimeout(function(){joe=false;}, 4000)
+
+            }
+          })
+          window.addEventListener("keydown", function(e){
+            if(e.keyCode == 87){
+              ball.body.velocity.set(0, -2, -13)
+            }
+          })
+           window.addEventListener("keydown", function(e){
+            if(e.keyCode == 83){
+              ball.body.velocity.set(0, -2, 13)
+
+    
+            }
+          })
+          window.addEventListener("keydown", function(e){
+            if(e.keyCode == 68){
+              ball.body.velocity.set(8, -2, 0)
+            }
+          })
+          window.addEventListener("keydown", function(e){
+            if(e.keyCode == 65){
+              ball.body.velocity.set(-8, -2, 0)
+            }
+          })
+            },
+        tick: function(){
+          var ball = document.querySelector("a-sphere");
+          var monk = document.getElementById("#monk");
+
+          var posx = ball.getAttribute("position").x
+          var posy = ball.getAttribute("position").y
+          var posz = ball.getAttribute("position").z
+          monk.setAttribute("position" ,{x:posx,y:posy,z:posz})
+
+          if(posy>=303){
+            console.log("bizness");
+          }
+
+          
+          
+          
+        }
+          });
+    </script>
+    <a-scene physics="friction:0.5; restitution: 0.8;" projectile background="color: #f9e0a8">
+      <a-sky color="#3aafd0"></a-sky>
+
+      <a-assets>
+        <img id="grass" src="https://i.imgur.com/hMVcoFJ.png">
+        <img id="jungle" src="https://i.imgur.com/oUPtduR.png">
+        <img id="monkey" src="https://i.imgur.com/YXOnZAR.jpg">
+        <img id="ez" src="https://i.imgur.com/r3ooJQx.png">
+        <img id="md" src="https://i.imgur.com/heODC3x.jpg">
+        <img id="hd" src="https://i.imgur.com/uLO1pSi.png">
+        <img id="troll" src="https://i.imgur.com/u9YOPeu.jpg">
+      </a-assets>
+      <a-sky src="#jungle"></a-sky>
+      <a-sphere dynamic-body opacity="0.7" radius="2.7" color="#0e94c4" position="0 6 -15"> <a-box rotation="0,0,0"src="#monkey" height="2" width="2" depth="2"></a-box>
+      </a-sphere>
+       <a-box id="#monk" rotation="0,0,0"src="#monkey" height="2" width="2" depth="2" material="transparent: true;">
+           <a-camera wasd-controls="enabled:false" position="0 3 4" spectator="true"><a-cursor></a-cursor></a-camera>
+        </a-box>
+      <a-plane static-body rotation="-90 0 0" position="0 -5 0" width="1000" height="1000" src="#grass" shadow>
+      </a-plane>
+
+      <a-box src="#ez" static-body height="1" depth="15" width="15" position="0 2 -15" shadow></a-box>
+      <a-box src="#ez" static-body height="1" depth="15" width="15" position="9 7 -45" shadow></a-box>
+      <a-box src="#ez" static-body height="1" depth="15" width="15" position="9 21.5 -65" shadow></a-box>
+      <a-box src="#md" static-body height="1" depth="15" width="15" position="9 36 -75" shadow></a-box>
+      <a-box src="#md" static-body height="1" depth="15" width="15" position="0 46 -85" shadow></a-box>
+      <a-box src="#md" static-body height="1" depth="15" width="15" position="-15 46 -85" shadow></a-box>
+      <a-box src="#md" static-body height="1" depth="15" width="15" position="-15 46 -130" shadow>
+                <a-cylinder static-body position="0 0 -30" rotation="0 90 90" height="45" radius="5"
+                  animation="property: rotation; to: 360 90 90; loop: true; easing:linear" src="#hd"> </a-cylinder>
+      </a-box>
+      <a-box src="#troll" static-body height="1" depth="15" width="15" position="-15 46 -190" shadow>
+        <a-box src="#ez" position="0 0 -30" depth="45" height="1" length="2" animation="property: rotation; to: 0 360 0; loop:true; easing: linear; dur: 10000"></a-box>
+      </a-box>
+      <a-box src="#hd" static-body height="1" depth="15" width="15" position="-15 46 -250" shadow></a-box>
+      <a-box src="#hd" static-body height="1" depth="15" width="15" position="-15 47 -265" shadow></a-box>
+      <a-box id="#stair"></a-box>
+      <a-box id="#stair"></a-box>
+      <a-box id="#stair"></a-box>
+      <a-box id="#stair"></a-box>
+      <a-box id="#stair"></a-box>
+      <a-box id="#stair"></a-box>
+        
+
+      
+      
+    </a-scene>
+  </body>
+</html>

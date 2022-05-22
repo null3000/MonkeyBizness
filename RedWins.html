@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+	<title>MONKEY PARTY</title>
+</head>
+
+<body>
+	<a-scene>
+		<a-assets>
+			<img id="jungle" src="https://i.imgur.com/ViuagFx.jpg">
+			<img id="monkey" src="https://i.imgur.com/YXOnZAR.jpg">
+		</a-assets>
+
+		<a-camera>
+			
+			<a-cursor></a-cursor>
+
+			<a-text position="-1.5 3 -5" scale= "3 3 3" color="red" value="SOLIDS WINS!" id="win"></a-text>
+			<a-text position="-1.5 1 -5" scale= "1.5 1.5 1.5" color="red" value="TIME TO MONKEY PARTY" id="win"></a-text>
+			
+		</a-camera>
+
+		<a-cylinder src="#monkey" position="4 2 -11.5" height="4" rotation="0 0 0" transparent="true"
+			animation__rotate="property: rotation; to: 0 360 0; dur: 1500; easing: linear; loop:true;"
+			animation__pos="property: position; to: 4 4 -11.5; dur: 1500; easing: linear; loop:true; dir:alternate;">
+		</a-cylinder>
+
+		<a-cylinder src="#monkey" position="-4 2 -11.5" height="4" rotation="0 0 0" transparent="true"
+			animation__rotate="property: rotation; to: 0 360 0; dur: 1500; easing: linear; loop:true;"
+			animation__pos="property: position; to: -4 4 -11.5; dur: 1500; easing: linear; loop:true; dir:alternate;">
+
+		</a-cylinder>
+
+		<a-sky src="#jungle"></a-sky>
+	</a-scene>
+</body>
+
+</html>
