@@ -9,6 +9,15 @@ margin-left: auto;
 margin-right: auto;
 }
 
+body{
+	font-family: Garamond;
+}
+h1,
+  h2,
+  h3 {
+    font-family: Garamond;
+  }
+
 .px{
 	font-size: 18px;
 }

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/1.0.4/aframe.min.js"></script>
+		<script src="shooterstart.js"></script>
+    <script>
+     
+    </script>
+  </head>
+  <body>
+    <a-scene script>
+      <a-camera wasd-controls="enabled:false"><a-cursor color="#78deff"></a-cursor></a-camera>
+      <a-plane position="0 -1 0" rotation="-90 0 0" color="black" width="50" height="50"  material="metalness:100">
+      <a-plane position="0 0.25 0" color="#0ff751" geometry="segmentsWidth:50; segmentsHeight:50; segmentsDepth:50;" width="50" height="50" material="shader:flat; wireframe:true;"></a-plane></a-plane>
+      <a-plane id="reset" position="0 2 -4" height="1.75" width="1.75" src="https://i.imgur.com/MXW1K3j.jpg" material="shader:flat">
+        <a-text position="-1.6 2.25 0" scale="2 2 2" value="Monkey Murder" color="#78deff"></a-text>
+      </a-plane>
+      <a-plane position="-2 4.25 -4" id="back" src="https://i.imgur.com/r2je4oJ.jpg" height="0.75" width="0.75"></a-plane>
+<a-cylinder position="-2 1.5 -4" src="https://i.imgur.com/YXOnZAR.jpg" radius="0.5" height="1.25" animation="property:position; to:-2 3 -4; loop:true; dir:alternate; easing:linear; dur:1750" animation__2="property:rotation; to:0 360 0; loop:true; easing:linear; dur:2500"></a-cylinder>
+      <a-cylinder position="2 3 -4" src="https://i.imgur.com/YXOnZAR.jpg" radius="0.5" height="1.25" animation="property:position; to:2 1.5 -4; loop:true; dir:alternate; easing:linear; dur:1750" animation__2="property:rotation; to:0 -360 0; loop:true; easing:linear; dur:2500"></a-cylinder>
+       <a-box id="banana" position="0 0.25 -4" width="0.5" height="0.5" src="https://i.imgur.com/Xlz9vZY.jpg" animation="property:rotation; to:0 180 0; loop:true; easing:linear; dur:1000; dir:alternate" depth="0.5"></a-box>
+      <a-box id="banana2" position="-2 0.25 -4" width="0.5" height="0.5" src="https://i.imgur.com/Xlz9vZY.jpg" depth="0.5" height="0.5" src="https://i.imgur.com/Xlz9vZY.jpg" animation="property:rotation; to:0 180 0; loop:true; easing:linear; dur:1000; dir:alternate" depth="0.5"></a-box>
+      <a-box id="banana3" position="1 0.25 -4"  width="0.5" height="0.5" src="https://i.imgur.com/Xlz9vZY.jpg" depth="0.5" height="0.5" src="https://i.imgur.com/Xlz9vZY.jpg" animation="property:rotation; to:0 180 0; loop:true; easing:linear; dur:1000; dir:alternate" depth="0.5"></a-box>
+      <a-box id="banana4" position="2 0.25 -4"  width="0.5" height="0.5" src="https://i.imgur.com/Xlz9vZY.jpg" depth="0.5" height="0.5" src="https://i.imgur.com/Xlz9vZY.jpg" animation="property:rotation; to:0 180 0; loop:true; easing:linear; dur:1000; dir:alternate" depth="0.5"></a-box>
+      <a-box id="banana5" position="-1 0.25 -4" width="0.5" height="0.5"  depth= "0.5" src="https://i.imgur.com/Xlz9vZY.jpg" animation="property:rotation; to:0 180 0; loop:true; easing:linear; dur:1000; dir:alternate" ></a-box>
+      <a-sky color="black"></a-sky>
+      <a-box id="wall"></a-box>
+      <a-box id="wall"></a-box>
+      <a-box id="wall"></a-box>
+      <a-box id="wall"></a-box>
+      <a-box id="wall"></a-box>
+      <a-box id="wall"></a-box>
+      <a-box id="wall"></a-box>
+      <a-box id="wall"></a-box>
+      <a-box id="wall"></a-box>
+      <a-box id="wall"></a-box>
+      <a-box id="wall2"></a-box>
+      <a-box id="wall2"></a-box>
+      <a-box id="wall2"></a-box>
+      <a-box id="wall2"></a-box>
+      <a-box id="wall2"></a-box>
+      <a-box id="wall2"></a-box>
+      <a-box id="wall2"></a-box>
+      <a-box id="wall2"></a-box>
+      <a-box id="wall2"></a-box>
+      <a-box id="wall2"></a-box>
+      <a-box id="wall3"></a-box>
+      <a-box id="wall3"></a-box>
+      <a-box id="wall3"></a-box>
+      <a-box id="wall3"></a-box>
+      <a-box id="wall3"></a-box>
+      <a-box id="wall3"></a-box>
+      <a-box id="wall3"></a-box>
+      <a-box id="wall3"></a-box>
+      <a-box id="wall3"></a-box>
+      <a-box id="wall3"></a-box>
+      <a-box id="wall4"></a-box>
+      <a-box id="wall4"></a-box>
+      <a-box id="wall4"></a-box>
+      <a-box id="wall4"></a-box>
+      <a-box id="wall4"></a-box>
+      <a-box id="wall4"></a-box>
+      <a-box id="wall4"></a-box>
+      <a-box id="wall4"></a-box>
+      <a-box id="wall4"></a-box>
+      <a-box id="wall4"></a-box>
+    </a-scene>
+  </body>
+</html>

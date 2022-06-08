@@ -4,12 +4,13 @@
 <head>
 	<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
 	<script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v4.0.1/dist/aframe-physics-system.min.js"></script>
-	<script src="script.js"></script>
+	<script src="pool.js"></script>
 
 </head>
 
 <body>
-	
+
+
 
 	<a-scene pooltable physics="friction: 0.05;">
 		<a-assets <img id="monkey"
@@ -28,6 +29,11 @@
 			<a-text position=".5 3 -5" color="white" value="n/a" id="bluescore"></a-text>
 
 		</a-camera>
+    <!-- monkes(ur welcome vaughn)-->
+    <a-cylinder position="-4 0.5 -4" src="https://i.imgur.com/YXOnZAR.jpg" radius="0.5" height="1.25" animation="property:position; to:-4 2 -4; loop:true; dir:alternate; easing:linear; dur:1750" animation__2="property:rotation; to:0 360 0; loop:true; easing:linear; dur:2500"></a-cylinder>
+    <a-cylinder position="-4 0.5 -8" src="https://i.imgur.com/YXOnZAR.jpg" radius="0.5" height="1.25" animation="property:position; to:-4 2 -8; loop:true; dir:alternate; easing:linear; dur:1750" animation__2="property:rotation; to:0 360 0; loop:true; easing:linear; dur:2500"></a-cylinder>
+    <a-cylinder position="4 0.5 -4" src="https://i.imgur.com/YXOnZAR.jpg" radius="0.5" height="1.25" animation="property:position; to:4 2 -4; loop:true; dir:alternate; easing:linear; dur:1750" animation__2="property:rotation; to:0 360 0; loop:true; easing:linear; dur:2500"></a-cylinder>
+    <a-cylinder position="4 0.5 -8" src="https://i.imgur.com/YXOnZAR.jpg" radius="0.5" height="1.25" animation="property:position; to:4 2 -8; loop:true; dir:alternate; easing:linear; dur:1750" animation__2="property:rotation; to:0 360 0; loop:true; easing:linear; dur:2500"></a-cylinder>
 		<!-- field -->
 		<a-plane static-body position="0 0 -7.875" rotation="-90 0 0" width="4" height="3.25" color="#86242a" shadow>
 		</a-plane>
@@ -108,23 +114,23 @@
 		<a-plane static-body color="#482029" position="1.75 -1 -5.75" width="0.5" height="2" rotation="0 180 0"></a-plane>
 		<a-plane static-body color="#482029" position="1.75 -2 -6" width="0.5" height="0.5" rotation="-90 0 0"></a-plane>
 		<!-- balls -->
-		<a-sphere dynamic-body="linearDamping:0.4; mass: 1" id="cueball" position="0 .2 -3" radius=".125"></a-sphere>
-		<a-sphere dynamic-body="linearDamping:0.4; mass: .16" position="0 .2 -6" radius=".125" color="solid" src="assets/1.jpg"></a-sphere>
-		<a-sphere dynamic-body="linearDamping:0.4; mass: .16" position="-.2 .2 -6.4" radius=".125" color="solid" src="assets/2.png" ></a-sphere>
-		<a-sphere dynamic-body="linearDamping:0.4; mass: .16" position=".2 .2 -6.4" radius=".125" src="assets/9.png" color="stripe"></a-sphere>
-		<a-sphere dynamic-body="linearDamping:0.4; mass: .16" id="eightball" position="0 .2 -6.8" radius=".125" src="assets/8.png">
+		<a-sphere dynamic-body="linearDamping:0.4; mass: 1; angularDamping:0.4;" id="cueball" position="0 .2 -3" radius=".125"></a-sphere>
+		<a-sphere dynamic-body="linearDamping:0.4; mass: .16; angularDamping:0.4;" position="0 .2 -6" radius=".125" color="solid" src="assets/1.jpg"></a-sphere>
+		<a-sphere dynamic-body="linearDamping:0.4; mass: .16; angularDamping:0.4;" position="-.2 .2 -6.4" radius=".125" color="solid" src="assets/2.png" ></a-sphere>
+		<a-sphere dynamic-body="linearDamping:0.4; mass: .16; angularDamping:0.4;" position=".2 .2 -6.4" radius=".125" src="assets/9.png" color="stripe"></a-sphere>
+		<a-sphere dynamic-body="linearDamping:0.4; mass: .16; angularDamping:0.4;" id="eightball" position="0 .2 -6.8" radius=".125" src="assets/8.png">
 		</a-sphere>
-		<a-sphere dynamic-body="linearDamping:0.4; mass: .16" position="-.4 .2 -6.8" radius=".125"  src="assets/10.png" color="stripe"></a-sphere>
-		<a-sphere dynamic-body="linearDamping:0.4; mass: .16" position=".4 .2 -6.8" radius=".125"  color="solid" src="assets/3.png"></a-sphere>
-		<a-sphere dynamic-body="linearDamping:0.4; mass: .16" position="-.6 .2 -7.2" radius=".125"  color="solid" src="assets/4.jpg"></a-sphere>
-		<a-sphere dynamic-body="linearDamping:0.4; mass: .16" position=".2 .2 -7.2" radius=".125" color="solid" src="assets/5.png"></a-sphere>
-		<a-sphere dynamic-body="linearDamping:0.4; mass: .16" position="-.2 .2 -7.2" radius=".125"  src="assets/11.png" color="stripe"></a-sphere>
-		<a-sphere dynamic-body="linearDamping:0.4; mass: .16" position=".6 .2 -7.2" radius=".125"  src="assets/12.png" color="stripe"></a-sphere>
-		<a-sphere dynamic-body="linearDamping:0.4; mass: .16" position="-.8 .2 -7.6" radius=".125"  src="assets/13.png" color="stripe"></a-sphere>
-		<a-sphere dynamic-body="linearDamping:0.4; mass: .16" position=".8 .2 -7.6" radius=".125"  color="solid" src="assets/6.png"></a-sphere>
-		<a-sphere dynamic-body="linearDamping:0.4; mass: .16" position="0 .2 -7.6" radius=".125" src="assets/14.png" color="stripe"></a-sphere>
-		<a-sphere dynamic-body="linearDamping:0.4; mass: .16" position=".4 .2 -7.6" radius=".125" src="assets/15.png"  color="stripe"></a-sphere>
-		<a-sphere dynamic-body="linearDamping:0.4; mass: .16" position="-.4 .2 -7.6" radius=".125"  color="solid" src="assets/7.jpg"></a-sphere>
+		<a-sphere dynamic-body="linearDamping:0.4; mass: .16; angularDamping:0.4;" position="-.4 .2 -6.8" radius=".125"  src="assets/10.png" color="stripe"></a-sphere>
+		<a-sphere dynamic-body="linearDamping:0.4; mass: .16; angularDamping:0.4;" position=".4 .2 -6.8" radius=".125"  color="solid" src="assets/3.png"></a-sphere>
+		<a-sphere dynamic-body="linearDamping:0.4; mass: .16; angularDamping:0.4;" position="-.6 .2 -7.2" radius=".125"  color="solid" src="assets/4.jpg"></a-sphere>
+		<a-sphere dynamic-body="linearDamping:0.4; mass: .16; angularDamping:0.4;" position=".2 .2 -7.2" radius=".125" color="solid" src="assets/5.png"></a-sphere>
+		<a-sphere dynamic-body="linearDamping:0.4; mass: .16; angularDamping:0.4;" position="-.2 .2 -7.2" radius=".125"  src="assets/11.png" color="stripe"></a-sphere>
+		<a-sphere dynamic-body="linearDamping:0.4; mass: .16; angularDamping:0.4;" position=".6 .2 -7.2" radius=".125"  src="assets/12.png" color="stripe"></a-sphere>
+		<a-sphere dynamic-body="linearDamping:0.4; mass: .16; angularDamping:0.4;" position="-.8 .2 -7.6" radius=".125"  src="assets/13.png" color="stripe"></a-sphere>
+		<a-sphere dynamic-body="linearDamping:0.4; mass: .16; angularDamping:0.4;" position=".8 .2 -7.6" radius=".125"  color="solid" src="assets/6.png"></a-sphere>
+		<a-sphere dynamic-body="linearDamping:0.4; mass: .16; angularDamping:0.4;" position="0 .2 -7.6" radius=".125" src="assets/14.png" color="stripe"></a-sphere>
+		<a-sphere dynamic-body="linearDamping:0.4; mass: .16; angularDamping:0.4;" position=".4 .2 -7.6" radius=".125" src="assets/15.png"  color="stripe"></a-sphere>
+		<a-sphere dynamic-body="linearDamping:0.4; mass: .16; angularDamping:0.4;" position="-.4 .2 -7.6" radius=".125"  color="solid" src="assets/7.jpg"></a-sphere>
 		<!--       buttons -->
 		<a-box position="0 0 -1.95" depth="0.15" height="0.35" rotation="0 0 0" color="#86242a"></a-box>
 		<a-cylinder id="button2" position="0 0 -1.9" rotation="90 0 0" radius="0.1" height="0.1" color="#482029">

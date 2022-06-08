@@ -1,0 +1,162 @@
+<html>
+  <head>
+       <meta name="description" content="Hello, WebVR! • A-Frame">
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  </head>
+  <body>
+    <script>
+         AFRAME.registerComponent("tree", {
+      init: function() {
+        var wood = document.querySelectorAll("a-cylinder");
+        var leaf = document.querySelectorAll("a-box");
+
+
+  var startingPos=(wood.length/2)*-1;
+        
+         for(var i = 0; i<wood.length;i++){
+           wood[i].setAttribute("position", {x:Math.floor(Math.random() * -25)+15, y:0,  z:Math.floor(Math.random()* -50)+10});
+           wood[i].setAttribute("src", "#wood");
+            wood[i].setAttribute("radius", .3);
+           wood[i].setAttribute("height", 5);
+           wood[i].setAttribute("shadow", true);
+            
+          }
+         for(var i = 0; i<leaf.length;i++){
+           leaf[i].setAttribute("position", {x:0, y:3,  z:0});
+           leaf[i].setAttribute("src", "#leaf");
+            leaf[i].setAttribute("radius", .3);
+           leaf[i].setAttribute("height", 2);
+           leaf[i].setAttribute("shadow", true);
+            
+          }
+        }
+      })
+    </script>
+    <a-scene tree background="color: #FAFAFA">
+      <a-camera><a-cursor></a-cursor></a-camera>
+    <a-assets>
+        <img id="wood" src="https://i.imgur.com/sVMnKa9.jpg">
+        <img id="leaf" src="https://i.imgur.com/oQjWNKN.png">
+        <img id="sky" src="https://i.imgur.com/VsAA7XT.png">
+       <img id="grass" src="https://i.imgur.com/4ZRX2if.jpg">
+      </a-assets>
+      <a-sky src="#sky"></a-sky>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+     <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+          <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+     <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+    <a-cylinder><a-box></a-box></a-cylinder>
+
+      <a-plane position="0 0 -10"   height="100" width="100" rotation="-90 0 0" src="#grass"></a-plane>
+<a-text scale="2 2 2" position="-1.25 3 -5" color="white" value="You Win :)"></a-text>
+
+    </a-scene>
+  </body>
+</html>

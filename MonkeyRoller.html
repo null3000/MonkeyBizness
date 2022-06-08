@@ -5,73 +5,7 @@
     <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v4.0.1/dist/aframe-physics-system.min.js"></script>
   </head>
   <body>
-       <script>
-      AFRAME.registerComponent("projectile", {
-        init: function() {
-          var ball = document.querySelector("a-sphere");
-          var camera = document.querySelector("a-camera");
-          var sts = document.getElementById("#stair");
-          var joe = false;
-          for(var i=0; i<sts.length; i++){
-            sts[i].setAttribute("color","#FFD700")
-           sts[i].setAttribute("position", {x:i*2.5, y:i, z:-10})
-          }
-
-          window.addEventListener("keypress", function (e){
-            if(e.keyCode == 32 && joe==false){
-              ball.body.velocity.set(0, 20, -4)
-              joe=true;
-            }
-          })
-          window.addEventListener("keyup", function (e){
-            if(e.keyCode == 32){
-              ball.body.velocity.set(0, -4, -4)
-              setTimeout(function(){joe=false;}, 4000)
-
-            }
-          })
-          window.addEventListener("keydown", function(e){
-            if(e.keyCode == 87){
-              ball.body.velocity.set(0, -2, -13)
-            }
-          })
-           window.addEventListener("keydown", function(e){
-            if(e.keyCode == 83){
-              ball.body.velocity.set(0, -2, 13)
-
-    
-            }
-          })
-          window.addEventListener("keydown", function(e){
-            if(e.keyCode == 68){
-              ball.body.velocity.set(8, -2, 0)
-            }
-          })
-          window.addEventListener("keydown", function(e){
-            if(e.keyCode == 65){
-              ball.body.velocity.set(-8, -2, 0)
-            }
-          })
-            },
-        tick: function(){
-          var ball = document.querySelector("a-sphere");
-          var monk = document.getElementById("#monk");
-
-          var posx = ball.getAttribute("position").x
-          var posy = ball.getAttribute("position").y
-          var posz = ball.getAttribute("position").z
-          monk.setAttribute("position" ,{x:posx,y:posy,z:posz})
-
-          if(posy>=303){
-            console.log("bizness");
-          }
-
-          
-          
-          
-        }
-          });
-    </script>
+		<script src="roller.js"></script>
     <a-scene physics="friction:0.5; restitution: 0.8;" projectile background="color: #f9e0a8">
       <a-sky color="#3aafd0"></a-sky>
 
@@ -107,14 +41,7 @@
         <a-box src="#ez" position="0 0 -30" depth="45" height="1" length="2" animation="property: rotation; to: 0 360 0; loop:true; easing: linear; dur: 10000"></a-box>
       </a-box>
       <a-box src="#hd" static-body height="1" depth="15" width="15" position="-15 46 -250" shadow></a-box>
-      <a-box src="#hd" static-body height="1" depth="15" width="15" position="-15 47 -265" shadow></a-box>
-      <a-box id="#stair"></a-box>
-      <a-box id="#stair"></a-box>
-      <a-box id="#stair"></a-box>
-      <a-box id="#stair"></a-box>
-      <a-box id="#stair"></a-box>
-      <a-box id="#stair"></a-box>
-        
+      <a-box src="#hd" static-body height="1" depth="15" width="15" position="-15 47 -265" shadow><a-text scale="2 2 2" position="-1.25 3 -5" color="white" value="JUMP FORWARD"></a-text></a-box>
 
       
       
